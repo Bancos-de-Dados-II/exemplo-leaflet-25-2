@@ -11,9 +11,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>#map { height: 256px; }</style>
+    <style>#map { height: 256px; width: 50%;}</style>
 </head>
 <body>
+    <div id="busca">
+        <input type="text" placeholder="seu local" 
+            id="inputLocal">
+        <button id="btBuscar">Buscar</button>
+    </div>
     <div id="map"></div>
     <script>
         let center = [-6.8886, -38.5566];
