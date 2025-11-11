@@ -44,6 +44,25 @@
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
+
+        let botaoBuscar = document.getElementById('btBuscar');
+        botaoBuscar.onclick = () => {
+            let texto = document
+                .getElementById('inputLocal').value;
+            fetch(
+                `https://nominatim.openstreetmap.org/search?q=${texto}&format=json`
+            ).then(response => response.json()).
+            then(data => {
+                let resultado = data[0];
+                let latlng = [
+                    parseFloat(resultado.lat),
+                    parseFloat(resultado.lon)
+                ];
+                map.setView(latlng, 15);
+                marker.setLatLng(latlng);
+            });
+        };
+
     </script>
 </body>
 </html>
