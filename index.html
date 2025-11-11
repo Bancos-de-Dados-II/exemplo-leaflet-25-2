@@ -60,6 +60,8 @@
                 ];
                 map.setView(latlng, 15);
                 marker.setLatLng(latlng);
+            }).catch(error =>{
+                alert('Local não encontrado');
             });
         };
 
