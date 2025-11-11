@@ -18,10 +18,12 @@
     <script>
         let center = [-6.8886, -38.5566];
         let map = L.map('map').setView(center, 15);
+        let marker = L.marker(center).addTo(map);
         
         map.locate();
         map.on('locationfound', location =>{
             map.setView(location.latlng);
+            marker.setLatLng(location.latlng);
         });
 
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
