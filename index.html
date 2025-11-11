@@ -17,12 +17,13 @@
     <div id="map"></div>
     <script>
         let center = [-6.8886, -38.5566];
-        let map = L.map('map',{
-            zoomControl: false,
-            maxZoom: 14,
-            minZoom:14,
-            dragging: false
-        }).setView(center, 14);
+        let map = L.map('map').setView(center, 15);
+        
+        map.locate();
+        map.on('locationfound', location =>{
+            map.setView(location.latlng);
+        });
+
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
