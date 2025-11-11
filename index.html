@@ -18,7 +18,16 @@
     <script>
         let center = [-6.8886, -38.5566];
         let map = L.map('map').setView(center, 15);
-        let marker = L.marker(center).addTo(map);
+
+        var icon = L.icon({
+            iconUrl: 'https://cdn-icons-png.flaticon.com/512/1397/1397971.png',
+            iconSize: [30,30]
+        });
+
+        let marker = L.marker(center,{
+            draggable: true,
+            icon: icon
+        }).addTo(map);
         
         map.locate();
         map.on('locationfound', location =>{
