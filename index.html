@@ -193,6 +193,21 @@
             draggable: true,
             icon: icon
         }).addTo(map);
+
+        fetch('http://localhost:3000/tarefas')
+            .then(response => response.json())
+            .then(data =>{
+                for(let i of data){
+                    L.marker(i.localizacao.coordinates
+                        .reverse())
+                        .addTo(map);
+                }
+        });
+
+        map.on('click', location =>{
+            marker.setLatLng(location.latlng);
+            map.setView(location.latlng);
+        });
         
         map.locate();
         map.on('locationfound', location =>{
@@ -250,6 +265,7 @@
             }).then(response =>{
                 if(response.status === 201){
                     alert('Tarefa adicionada com sucesso');
+                    location.reload();
                 }
             });
             //TODO: Tratar as exceções....
