@@ -225,6 +225,25 @@
             });
         };
 
+        let botaoAdicionar = document
+            .getElementById('btAdicionar');
+        botaoAdicionar.onclick = () =>{
+            let tarefa = {
+                nome: document
+                    .getElementById('inputNome').value,
+                descricao: document
+                    .getElementById('inputDescricao').value,
+                tipo: document
+                    .getElementById('selectTipo').value,
+                localizacao: {
+                    type: "Point",
+                    coordinates: [marker.getLatLng().lng, 
+                        marker.getLatLng().lat]
+                }
+            };
+            console.log(tarefa);
+        }
+
     </script>
     </div>
 </body>
