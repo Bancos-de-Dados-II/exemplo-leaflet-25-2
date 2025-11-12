@@ -241,7 +241,18 @@
                         marker.getLatLng().lat]
                 }
             };
-            console.log(tarefa);
+            fetch('http://localhost:3000/tarefas',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(tarefa)
+            }).then(response =>{
+                if(response.status === 201){
+                    alert('Tarefa adicionada com sucesso');
+                }
+            });
+            //TODO: Tratar as exceções....
         }
 
     </script>
